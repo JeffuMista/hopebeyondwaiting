@@ -10,14 +10,14 @@ router.get("/", async (req, res) => {
 
 //POST api/notes => create new entry - Optionally add Id
 router.post("/", async (req, res) => {
-  const { name, phone, nationalId, userId } = req.body;
+  const { name, phone, nationalId } = req.body;
 
   if (!name || !phone || !nationalId)
     return res
       .status(400)
       .json({ message: "Please enter the required details." });
 
-  const user = await User.create({ name, phone, nationalId, userId });
+  const user = await User.create({ name, phone, nationalId });
   res.status(201).json(user);
 });
 

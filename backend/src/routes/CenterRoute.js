@@ -41,7 +41,19 @@ router.put("/:id", async (req, res) => {
   res.json(updated);
 });
 
-//DELETE api/centers/:id
+//Get A single center by ID
+router.get("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const center = await Center.findById(id);
+    if (!center) return res.status(404).json({ message: "center not found" });
+    res.status(200).json(center);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+//DELETE api/centers/:id ADMIN PRIVILEGE
 router.delete("/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -56,6 +68,32 @@ router.delete("/:id", async (req, res) => {
   } catch (error) {
     console.error("Delete error:", error);
     res.status(500).json({ message: "Server error" });
+  }
+});
+
+// ADD SLOT TO CENTER (ADMIN OR TESTING)
+router.post("/:id/slots", async (req, res) => {
+  try {
+    const center = await Center.findById(req.params.id);
+    if (!center) return res.status(404).json({ message: "Center not found" });
+
+    const { start, end, capacity } = req.body;
+
+    center.slots.push({
+      start,
+      end,
+      capacity,
+      booked: 0,
+    });
+
+    await center.save();
+
+    return res.status(200).json({
+      message: "Slot added",
+      center,
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 });
 
