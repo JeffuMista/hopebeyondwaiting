@@ -12,10 +12,12 @@ const app = express();
 
 connectDB();
 
-app.use(cors({
+app.use(
+  cors({
     origin: process.env.ALLOWED_ORIGIN,
-    methods: ["GET", "PUT", "POST", "DELETE"]
-}));
+    methods: ["GET", "PUT", "POST", "DELETE"],
+  })
+);
 
 app.use(express.json());
 
@@ -25,7 +27,7 @@ app.use("/api/centers", centerRouter);
 app.use("/api/users", userRouter);
 app.use("/api/auth", ClerkRegister);
 
-
 const PORT = process.env.PORT || 5000;
+
 
 app.listen(PORT, () => console.log(`API is on http://localhost:${PORT}`));
