@@ -5,7 +5,7 @@ const { connectDB } = require("./config/db");
 const bookingRouter = require("./routes/BookingRoute");
 const centerRouter = require("./routes/CenterRoute");
 const userRouter = require("./routes/UserRoute");
-
+const ClerkRegister = require("./routes/auth");
 dotenv.config();
 
 const app = express();
@@ -23,6 +23,8 @@ app.get("/", (req, res) => res.send("HopeBeyondWaiting API up and running..."));
 app.use("/api/bookings", bookingRouter);
 app.use("/api/centers", centerRouter);
 app.use("/api/users", userRouter);
+app.use("/api/auth", ClerkRegister);
+
 
 const PORT = process.env.PORT || 5000;
 

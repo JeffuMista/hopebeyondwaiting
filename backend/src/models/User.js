@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema(
     nationalId: { type: Number, required: true },
     role: {
       type: String,
-      enum: ["patient", "center-admin"],
+      enum: ["user", "admin"],
       default: "patient",
     },
   },

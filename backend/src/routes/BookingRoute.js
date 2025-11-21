@@ -5,6 +5,7 @@ const Center = require("../models/Center");
 
 //GET all Bookings
 router.get("/", async (req, res) => {
+  const {userId} = req.query
   const bookings = await Booking.find();
   res.json(bookings);
 });

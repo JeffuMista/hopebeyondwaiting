@@ -1,42 +1,67 @@
-import { useState } from "react";
-import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
-import "./index.css";
-import Body from "./components/Body";
-import Dashboard from "./components/Dashboard"
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  UserButton,
-  // useUser
-} from "@clerk/clerk-react";
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import ClerkNavbar from "./components/ClerkNavbar";
+import MainPage from "./components/pages/MainPage";
+import Dashboard from "./components/pages/Dashboard";
+import CenterPage from "./components/pages/CenterPage";
+import BookingComponent from "./components/Booking";
+import UserComponent from "./components/User";
+import AdminPage from "./components/pages/AdminPage";
+import { SignIn, SignUp, SignedIn } from "@clerk/clerk-react";
 
 function App() {
-  // const { user } = useUser();
   return (
-    <>
-      <header className="flex flex-column">
-        <Navbar />
-        <div className="flex items-center gap-3 p-4 bg-purple-600 text-white px-20 text-xl font-bold">
-          <SignedOut>
-            <SignInButton mode="modal"/>
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
-        </div>
-      </header>
-      <SignedOut>
-        <Body />
-        <Footer />
-      </SignedOut>
-      <SignedIn>
-        <Dashboard />
-        <Footer />
-      </SignedIn>
-    </>
+    <BrowserRouter>
+      <ClerkNavbar />
+
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+
+        <Route path="/sign-in" element={<SignIn routing="path" path="/sign-in" />} />
+        <Route path="/sign-up" element={<SignUp routing="path" path="/sign-up" />} />
+
+        <Route
+          path="/dashboard"
+          element={
+            <SignedIn>
+              <Dashboard />
+            </SignedIn>
+          }
+        />
+
+        <Route path="/centers" element={<CenterPage />} />
+
+        <Route
+          path="/book"
+          element={
+            <SignedIn>
+              <BookingComponent />
+            </SignedIn>
+          }
+        />
+
+        <Route
+          path="/profile"
+          element={
+            <SignedIn>
+              <UserComponent />
+            </SignedIn>
+          }
+        />
+
+        <Route
+          path="/admin"
+          element={
+            <SignedIn>
+              <AdminPage /> 
+            </SignedIn>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
 export default App;
+
