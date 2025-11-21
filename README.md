@@ -236,14 +236,12 @@ cd backend
 npm start
 ```
 
-- Production (frontend UI) - "https://hopebeyondwaiting.vercel.app/"
-
 ## 📡 API Documentation
 
 ### Base URL
 
 - Development: `http://localhost:5000/api`
-- Production: `https://hopebeyondwaiting.onrender.com/api`
+- Production: `https://your-domain.com/api`
 
 ### Authentication Routes (`/api/auth`)
 
