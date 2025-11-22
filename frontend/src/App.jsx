@@ -2,6 +2,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import ClerkNavbar from "./components/ClerkNavbar";
+import Footer from "./components/Footer";
 import MainPage from "./components/pages/MainPage";
 import Dashboard from "./components/pages/Dashboard";
 import CenterPage from "./components/pages/CenterPage";
@@ -59,6 +60,7 @@ function App() {
           }
         />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

@@ -59,20 +59,23 @@ const Navbar = () => {
   const isAdmin = mongoUser?.role === "admin";
 
   return (
-    <nav className="bg-white shadow-md border-b border-gray-200">
+    <nav className="bg-white shadow-md border-b border-gray-200 p-5">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* BRAND */}
-        <Link to="/" className="text-2xl font-bold text-blue-800">
-          Hope Beyond Waiting
+        <Link to="/" className="text-2xl font-bold text-blue-800 flex felx-column">
+          <div className="flex flex-column justify-center items-center">
+            <img src="./public/cancerribbon.jpg" alt="Cancer Ribbon" className="w-10" />
+            Hope Beyond Waiting
+          </div> 
         </Link>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
-          <Link to="/" className="text-gray-700 hover:text-blue-700">
+          <Link to="/" className="text-white hover:text-gray-700 p-2 border rounded-sm bg-blue-500 font-bold cursor-pointer">
             Home
           </Link>
 
-          <Link to="/centers" className="text-gray-700 hover:text-blue-700">
+          <Link to="/centers" className="text-white hover:text-gray-700 p-2 border rounded-sm bg-blue-500 font-bold cursor-pointer">
             Centers
           </Link>
 
@@ -80,19 +83,19 @@ const Navbar = () => {
             <>
               <Link
                 to="/dashboard"
-                className="text-gray-700 hover:text-blue-700"
+                className="text-white hover:text-gray-700 p-2 border rounded-sm bg-blue-500 font-bold cursor-pointer"
               >
                 Dashboard
               </Link>
 
-              <Link to="/book" className="text-gray-700 hover:text-blue-700">
+              <Link to="/book" className="text-white hover:text-gray-700 p-2 border rounded-sm bg-blue-500 font-bold cursor-pointer">
                 Book Appointment
               </Link>
 
               {isAdmin && (
                 <Link
                   to="/admin"
-                  className="text-gray-700 hover:text-red-700 font-semibold"
+                  className="text-white hover:text-gray-700 p-2 border rounded-sm bg-blue-500 font-bold cursor-pointer"
                 >
                   Admin Panel
                 </Link>
