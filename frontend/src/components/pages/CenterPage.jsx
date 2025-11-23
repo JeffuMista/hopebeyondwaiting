@@ -16,7 +16,7 @@ const CenterPage = () => {
   const { user } = useUser();
 
   const [centers, setCenters] = useState([]);
-  const [loading, setLoading] = useEffect(true)
+  const [loading, setLoading] = useState(true);
   const [expanded, setExpanded] = useState({}); // track expanding center cards
 
   useEffect(() => {
@@ -27,15 +27,26 @@ const CenterPage = () => {
       } catch (err) {
         console.error("Failed to load centers:", err);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
     };
 
     loadCenters();
   }, [api]);
 
-  if(loading) return <p> Loading Centers...</p>
-  if(error) return <p>Error: {error.message}</p>
+  if (loading)
+    return (
+      <div className="min-h-[75vh]">
+        <div className="max-w-5xl mx-auto p-8 mt-10 bg-white rounded-2xl shadow-xl border border-gray-200">
+          <h1 className="text-4xl font-bold mb-6">Cancer Treatment Centers</h1>
+
+          <p className="text-gray-600 mb-10">
+            Explore treatment centers across Kenya and check slot availability.
+          </p>
+          <p className="text-black font-bold text-xl">Loading Centers...</p>
+        </div>
+      </div>
+    );
 
   const toggleExpand = (id) => {
     setExpanded((prev) => ({
@@ -154,7 +165,7 @@ const CenterPage = () => {
           ))}
         </div>
       </div>
-    </div >
+    </div>
   );
 };
 
