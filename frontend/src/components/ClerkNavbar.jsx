@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserButton, useUser } from "@clerk/clerk-react";
 import { useApi } from "./lib/api";
+import logo from "../assets/cancerribbon.jpg"
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const Navbar = () => {
@@ -64,7 +65,7 @@ const Navbar = () => {
         {/* BRAND */}
         <Link to="/" className="text-2xl font-bold text-blue-800 flex felx-column">
           <div className="flex flex-column justify-center items-center">
-            <img src="./public/cancerribbon.jpg" alt="Cancer Ribbon" className="w-10" />
+            <img src={logo} alt="Cancer Ribbon" className="w-10" />
             Hope Beyond Waiting
           </div> 
         </Link>
