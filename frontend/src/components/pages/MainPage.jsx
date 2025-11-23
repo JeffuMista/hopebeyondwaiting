@@ -90,15 +90,6 @@ const MainPage = () => {
           </div>
         </div>
       </div>
-
-      {/* FOOTER */}
-      {/* <footer className="bg-blue-900 text-blue-100 py-6 mt-10">
-        <div className="max-w-5xl mx-auto text-center">
-          <p className="text-sm">
-            © {new Date().getFullYear()} Hope Beyond Waiting • Accelerating Cancer Care in Kenya
-          </p>
-        </div>
-      </footer> */}
     </div>
   );
 };

@@ -16,6 +16,7 @@ const CenterPage = () => {
   const { user } = useUser();
 
   const [centers, setCenters] = useState([]);
+  const [loading, setLoading] = useEffect(true)
   const [expanded, setExpanded] = useState({}); // track expanding center cards
 
   useEffect(() => {
@@ -25,11 +26,16 @@ const CenterPage = () => {
         setCenters(data);
       } catch (err) {
         console.error("Failed to load centers:", err);
+      } finally {
+        setLoading(false)
       }
     };
 
     loadCenters();
   }, [api]);
+
+  if(loading) return <p> Loading Centers...</p>
+  if(error) return <p>Error: {error.message}</p>
 
   const toggleExpand = (id) => {
     setExpanded((prev) => ({
