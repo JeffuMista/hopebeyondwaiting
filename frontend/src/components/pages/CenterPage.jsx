@@ -43,7 +43,12 @@ const CenterPage = () => {
           <p className="text-gray-600 mb-10">
             Explore treatment centers across Kenya and check slot availability.
           </p>
-          <p className="text-black font-bold text-xl">Loading Centers...</p>
+          <p className="text-black font-bold text-xl text-center">
+            Loading Centers
+          </p>
+          <div className="flex items-center justify-center bg-gray-50 p-10">
+            <div className="animate-spin rounded-full h-12 w-12 border-[3px] border-blue-600 border-t-transparent"></div>
+          </div>
         </div>
       </div>
     );
